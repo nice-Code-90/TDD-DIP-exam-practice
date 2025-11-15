@@ -61,4 +61,23 @@ public sealed class RendezTest
 
         CollectionAssert.AreEqual(vartEredmeny, tomb);
     }
+
+    [TestMethod]
+    public void Rendezes_UgyanazzalATombbelKetszer_StrategiaCsakEgyszerFutLe()
+    {
+        // Arrange
+        var mockStrategia = new MockRendezesiStrategia();
+        var rendez = new Rendez(mockStrategia);
+        int[] tomb1 = { 3, 1, 2 };
+        int[] tomb2 = { 3, 1, 2 }; // Fontos, hogy a tartalom azonos legyen
+
+        // Act
+        rendez.Rendezes(tomb1);
+        rendez.Rendezes(tomb2);
+
+        // Assert
+        // A stratégiát csak az első hívásnál kellett volna meghívni,
+        // a másodiknál a cache-ből kellett volna dolgozni.
+        Assert.AreEqual(1, mockStrategia.HivasokSzama);
+    }
 }
