@@ -684,6 +684,16 @@
             "related": ".xml"
           }
         }
+      },
+      "Rendezes.Logika/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/Rendezes.Logika.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Rendezes.Logika.dll": {}
+        }
       }
     }
   },
@@ -1643,12 +1653,18 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "Rendezes.Logika/1.0.0": {
+      "type": "project",
+      "path": "../Rendezes.Logika/Rendezes.Logika.csproj",
+      "msbuildProject": "../Rendezes.Logika/Rendezes.Logika.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
       "MSTest >= 3.6.4",
-      "Microsoft.NET.Test.Sdk >= 17.12.0"
+      "Microsoft.NET.Test.Sdk >= 17.12.0",
+      "Rendezes.Logika >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -1675,7 +1691,11 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/home/mazik/Dokumentumok/RTT/TDD-DIP-exam-practice/Rendezes.Logika/Rendezes.Logika.csproj": {
+              "projectPath": "/home/mazik/Dokumentumok/RTT/TDD-DIP-exam-practice/Rendezes.Logika/Rendezes.Logika.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

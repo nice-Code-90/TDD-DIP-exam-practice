@@ -1,23 +1,16 @@
 @startuml
-
-interface ICserélhető {
-  -- C# syntax --
-  +{abstract} void Csere(ref int a, ref int b)
+class Rendez {
+  +Rendez(RendezésiStratégia rs) { this.rs = rs; rs.SetRendező(this); }
+  +void Rendezés(int[] T) { rs.Rendezés(T); }
+  --C# syntax--
+  +void Csere(ref int A, ref int B) { int temp = A; A = B; B = temp; }
 }
-
-class Rendez implements ICserélhető {
-  -RendezésiStratégia rs
-  +Rendez(RendezésiStratégia rs)
-  +void Rendezés(int[] T) { rs.Rendezés(T, this); }
-  +void Csere(ref int a, ref int b)
-}
-
 interface RendezésiStratégia {
-  +{abstract} void Rendezés(int[] T, ICserélhető cserélő)
+  +{abstract} void SetRendező(Rendez r)
+  +{abstract} void Rendezés(int[] T)  // használja az r.Csere metódust
 }
-
 Rendez o-down-> RendezésiStratégia : -rs
-RendezésiStratégia ..> ICserélhető : <<uses>>
+RendezésiStratégia -up-> Rendez  : -r
 BuborékosRendezés .up.|> RendezésiStratégia
 HatékonyBubRend .up.|> RendezésiStratégia
 @enduml
