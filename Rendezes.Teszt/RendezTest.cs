@@ -18,4 +18,15 @@ public sealed class RendezTest
         // egy RendezesArgumentumKivetel típusú kivételt fog dobni.
         Assert.ThrowsException<RendezesArgumentumKivetel>(() => rendez.Rendezes(null));
     }
+
+    [TestMethod]
+    public void Rendezes_TulNagyMeretuTombbel_RendezesArgumentumKiveteltDob()
+    {
+        // Arrange
+        var rendez = new Rendez(null);
+        var tulNagyTomb = new int[10_001];
+
+        // Act & Assert
+        Assert.ThrowsException<RendezesArgumentumKivetel>(() => rendez.Rendezes(tulNagyTomb));
+    }
 }

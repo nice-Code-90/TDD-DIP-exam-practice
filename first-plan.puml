@@ -1,9 +1,9 @@
 @startuml
 class Rendez {
-  +Rendez(RendezésiStratégia rs) { this.rs = rs; rs.SetRendező(this); }
-  +void Rendezés(int[] T) { rs.Rendezés(T); }
-  --C# syntax--
-  +void Csere(ref int A, ref int B) { int temp = A; A = B; B = temp; }
+  +Rendez(RendezésiStratégia rs) { this.rs = rs; rs.SetRendező(this); }
+  +void Rendezés(int[] T) { rs.Rendezés(T); }
+  --C# syntax--
+  +void Csere(ref int A, ref int B) { int temp = A; A = B; B = temp; }
 }
 interface RendezésiStratégia {
   +{abstract} void SetRendező(Rendez r)
