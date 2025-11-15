@@ -20,8 +20,9 @@ public class Rendez : ICserelheto
         if (t.Length > 10_000)
         {
             throw new RendezesArgumentumKivetel("A rendezendő tömb mérete nem lehet nagyobb 10 000-nél.");
-            
         }
+        _strategia.Rendezes(t, this);
+
     }
 
     // Az interfész implementálása. Egyelőre üres.
