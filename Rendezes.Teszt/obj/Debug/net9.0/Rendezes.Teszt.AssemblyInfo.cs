@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Rendezes.Teszt")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7f7afbcabe16c81e847aa08069788d500a0c1384")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b607548f3d7c9e699c8bc8464210e76c50e852eb")]
 [assembly: System.Reflection.AssemblyProductAttribute("Rendezes.Teszt")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Rendezes.Teszt")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
