@@ -1,8 +1,12 @@
+using System;
+using System.Collections.Generic;
+
 namespace Rendezes.Logika;
 
 public class Rendez : ICserelheto
 {
     private readonly IRendezesiStrategia _strategia;
+    private readonly Dictionary<string, int[]> _cache = new();
 
     // Konstruktor, ami fogadja a stratégiát.
     public Rendez(IRendezesiStrategia strategia)
@@ -21,11 +25,27 @@ public class Rendez : ICserelheto
         {
             throw new RendezesArgumentumKivetel("A rendezendő tömb mérete nem lehet nagyobb 10 000-nél.");
         }
+
+        // 1. Kulcs generálása a bemeneti tömbből.
+        var key = string.Join(",", t);
+
+        // 2. Ellenőrizzük, hogy az eredmény már a cache-ben van-e.
+        if (_cache.TryGetValue(key, out var cachedResult))
+        {
+            // Ha igen (cache hit), az eredményt bemásoljuk a bemeneti tömbbe,
+            // és visszatérünk anélkül, hogy a stratégiát hívnánk.
+            Array.Copy(cachedResult, t, t.Length);
+            return;
+        }
+
+        // 3. Ha nincs a cache-ben (cache miss), futtatjuk a rendezést.
         _strategia.Rendezes(t, this);
 
+        // 4. A frissen rendezett tömböt elmentjük a cache-be a jövő számára.
+        _cache[key] = (int[])t.Clone();
     }
 
-    // Az interfész implementálása. Egyelőre üres.
+
     public void Csere(ref int a, ref int b)
     {
         (a, b) = (b, a);
