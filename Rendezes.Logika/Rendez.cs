@@ -6,6 +6,7 @@ namespace Rendezes.Logika;
 public class Rendez : ICserelheto
 {
     private readonly IRendezesiStrategia _strategia;
+    private const int MaxCacheSize = 100;
     private readonly Dictionary<string, int[]> _cache = new();
 
     // Konstruktor, ami fogadja a stratégiát.
@@ -41,8 +42,11 @@ public class Rendez : ICserelheto
         // 3. Ha nincs a cache-ben (cache miss), futtatjuk a rendezést.
         _strategia.Rendezes(t, this);
 
-        // 4. A frissen rendezett tömböt elmentjük a cache-be a jövő számára.
-        _cache[key] = (int[])t.Clone();
+        // 4. A frissen rendezett tömböt elmentjük a cache-be, ha van még hely.
+        if (_cache.Count < MaxCacheSize)
+        {
+            _cache[key] = (int[])t.Clone();
+        }
     }
 
 
