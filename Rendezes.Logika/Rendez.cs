@@ -13,6 +13,10 @@ public class Rendez : ICserelheto
     //  A metódus, amit a tesztünk hív. Egyelőre üres.
     public void Rendezes(int[] t)
     {
+        if (t is null)
+        {
+            throw new RendezesArgumentumKivetel("A rendezendő tömb nem lehet null.");
+        }
     }
 
     // Az interfész implementálása. Egyelőre üres.
