@@ -10,7 +10,7 @@ public class Rendez : ICserelheto
         _strategia = strategia;
     }
 
-    // A metódus, amit a tesztünk hív. Egyelőre üres.
+    //  A metódus, amit a tesztünk hív. Egyelőre üres.
     public void Rendezes(int[] t)
     {
     }
