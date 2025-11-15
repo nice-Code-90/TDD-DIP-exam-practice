@@ -80,4 +80,29 @@ public sealed class RendezTest
         // a másodiknál a cache-ből kellett volna dolgozni.
         Assert.AreEqual(1, mockStrategia.HivasokSzama);
     }
+
+    [TestMethod]
+    public void Rendezes_CacheMegteleseUtan_NemTarolUjElemet()
+    {
+        // Arrange
+        var mockStrategia = new MockRendezesiStrategia();
+        var rendez = new Rendez(mockStrategia);
+
+        // Act
+        // 1. Feltöltjük a cache-t 100 különböző elemmel.
+        for (int i = 0; i < 100; i++)
+        {
+            rendez.Rendezes(new int[] { i });
+        }
+
+        // 2. Rendezünk egy 101. elemet, aminek már nem szabadna bekerülnie.
+        var szazegyedikTomb = new int[] { 101 };
+        rendez.Rendezes(szazegyedikTomb);
+        rendez.Rendezes(szazegyedikTomb); // Újra meghívjuk ugyanazzal.
+
+        // Assert
+        // A stratégiának 100-szor kellett lefutnia a feltöltéskor,
+        // és 2-szer a 101. elemre, mert az nem került a cache-be.
+        Assert.AreEqual(102, mockStrategia.HivasokSzama);
+    }
 }
