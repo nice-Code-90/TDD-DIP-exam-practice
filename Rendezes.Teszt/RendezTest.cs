@@ -29,4 +29,22 @@ public sealed class RendezTest
         // Act & Assert
         Assert.ThrowsException<RendezesArgumentumKivetel>(() => rendez.Rendezes(tulNagyTomb));
     }
+
+    [TestMethod]
+    public void Csere_KetErtekkel_HelyesenFelcsereliOketa()
+    {
+        // Arrange
+        var rendez = new Rendez(null);
+        int a = 10;
+        int b = 20;
+        const int originalA = 10;
+        const int originalB = 20;
+
+        // Act
+        rendez.Csere(ref a, ref b);
+
+        // Assert
+        Assert.AreEqual(originalB, a);
+        Assert.AreEqual(originalA, b);
+    }
 }
