@@ -105,4 +105,21 @@ public sealed class RendezTest
         // és 2-szer a 101. elemre, mert az nem került a cache-be.
         Assert.AreEqual(102, mockStrategia.HivasokSzama);
     }
+
+    [TestMethod]
+    public void Rendezes_HatekonyBuborekosStrategiaval_HelyesenRendeziATombot()
+    {
+        // Arrange
+        var strategia = new HatekonyBuborekosRendezes();
+        var rendez = new Rendez(strategia);
+        int[] tomb = { 5, 1, 4, 2, 8 };
+        int[] vartEredmeny = { 1, 2, 4, 5, 8 };
+
+        // Act
+        rendez.Rendezes(tomb);
+
+
+        // Assert
+        CollectionAssert.AreEqual(vartEredmeny, tomb);
+    }
 }
