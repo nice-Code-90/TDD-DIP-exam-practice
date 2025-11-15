@@ -18,5 +18,21 @@ public class BuborekRendezesTests
 
         CollectionAssert.AreEqual(vartEredmeny, tomb);
     }
-    
+
+    [TestMethod]
+    public void Rendezes_UresTombbel_NemDobKiveteltEsUresTombAzEredmeny()
+    {
+        // Arrange
+        var strategia = new BuborekRendezes();
+        var cserelo = new Rendez(strategia);
+        int[] tomb = Array.Empty<int>();
+        int[] vartEredmeny = Array.Empty<int>();
+
+        // Act
+        strategia.Rendezes(tomb, cserelo);
+
+        // Assert
+        CollectionAssert.AreEqual(vartEredmeny, tomb);
+    }
+
 }
