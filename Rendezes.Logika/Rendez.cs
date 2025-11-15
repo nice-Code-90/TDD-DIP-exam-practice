@@ -17,6 +17,11 @@ public class Rendez : ICserelheto
         {
             throw new RendezesArgumentumKivetel("A rendezendő tömb nem lehet null.");
         }
+        if (t.Length > 10_000)
+        {
+            throw new RendezesArgumentumKivetel("A rendezendő tömb mérete nem lehet nagyobb 10 000-nél.");
+            
+        }
     }
 
     // Az interfész implementálása. Egyelőre üres.
