@@ -47,4 +47,18 @@ public sealed class RendezTest
         Assert.AreEqual(originalB, a);
         Assert.AreEqual(originalA, b);
     }
+
+    [TestMethod]
+    public void Rendezes_BuborekosStrategiaval_HelyesenRendeziATombot()
+    {
+        var strategia = new BuborekRendezes();
+        var rendez = new Rendez(strategia);
+
+        int[] tomb = { 5, 1, 4, 2, 8 };
+        int[] vartEredmeny = { 1, 2, 4, 5, 8 };
+
+        rendez.Rendezes(tomb);
+
+        CollectionAssert.AreEqual(vartEredmeny, tomb);
+    }
 }
