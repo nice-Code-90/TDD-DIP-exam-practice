@@ -27,5 +27,6 @@ public class Rendez : ICserelheto
     // Az interfész implementálása. Egyelőre üres.
     public void Csere(ref int a, ref int b)
     {
+        (a, b) = (b, a);
     }
 }
