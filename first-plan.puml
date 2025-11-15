@@ -1,0 +1,16 @@
+@startuml
+class Rendez {
+  +Rendez(RendezésiStratégia rs) { this.rs = rs; rs.SetRendező(this); }
+  +void Rendezés(int[] T) { rs.Rendezés(T); }
+  --C# syntax--
+  +void Csere(ref int A, ref int B) { int temp = A; A = B; B = temp; }
+}
+interface RendezésiStratégia {
+  +{abstract} void SetRendező(Rendez r)
+  +{abstract} void Rendezés(int[] T)  // használja az r.Csere metódust
+}
+Rendez o-down-> RendezésiStratégia : -rs
+RendezésiStratégia -up-> Rendez  : -r
+BuborékosRendezés .up.|> RendezésiStratégia
+HatékonyBubRend .up.|> RendezésiStratégia
+@enduml
